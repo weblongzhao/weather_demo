@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>weather</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <link rel="stylesheet" type="text/css" href="
+//at.alicdn.com/t/font_605304_03vllabgg636usor.css">
+<!-- api接口
+https://weixin.jirengu.com/weather
+ -->
+</head>
+<body>
+    <section>
+        <div class="info clearfix">
+            <div class="suggest">
+                <ul class="planes">
+                    <li class="active">天气较好，温度适宜，是个好天气哦。这样的天气适宜旅游，您可以尽情地享受大自然的风光。</li>
+                    <li>紫外线辐射强，建议涂擦SPF20左右、PA++的防晒护肤品。避免在10点至14点暴露于日光下。</li>
+                    <li>建议着薄外套或牛仔衫裤等服装。年老体弱者宜着夹克衫、薄毛衣等。昼夜温差较大，注意适当增减衣服。</li>
+                </ul>
+                <div class="tabs">
+                    <span class="active iconfont icon-sort_travel">出行指南</span>
+                    <span class="iconfont icon-sunny">紫外线</span>
+                    <span class="iconfont icon-clothes">穿衣指数</span>
+                </div>
+            </div>
+            <div class="location">
+                <span class="iconfont icon-location"></span>
+                <div class="city">北京</div>
+                <div class="time">
+                    20:33 Pm
+                </div>
+            </div>
+        </div>
+        <div class="temperature clearfix">
+            <div class="today">
+                <div class="day">
+                    <h3 class="temp">32</h3>
+                    <span>Monday</span>
+                </div>
+                <div class="dayicon">
+                    <span class="iconfont icon-sunny"></span>
+                </div>
+            </div>
+            <ul class="week">
+                <li>
+                    <div class="days">
+                        <span>TUE</span>
+                    </div>
+                    <div>
+                    <span class="iconfont icon-sunny"></span>
+                    </div>
+                    <span>60</span>
+                </li>
+                <li>
+                    <div class="days">
+                        <span>TUE</span>
+                    </div>
+                    <div>
+                    <span class="iconfont icon-sunny"></span>
+                    </div>
+                    <span>60</span>
+                </li>
+                <li>
+                    <div class="days">
+                        <span>TUE</span>
+                    </div>
+                    <div>
+                    <span class="iconfont icon-sunny"></span>
+                    </div>
+                    <span>60</span>
+                </li>
+                <li>
+                    <div class="days">
+                         <span>TUE</span>
+                    </div>
+                    <div>
+                    <span class="iconfont icon-sunny"></span>
+                    </div>
+                    <span>60</span>
+                </li>
+                <li>
+                    <div class="days">
+                         <span>TUE</span>
+                    </div>
+                    <div>
+                    <span class="iconfont icon-sunny"></span>
+                    </div>
+                    <span>60</span>
+                </li>
+                <li>
+                    <div class="days">
+                         <span>TUE</span>
+                    </div>
+                    <div>
+                    <span class="iconfont icon-sunny"></span>
+                    </div>
+                    <span>60</span>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+</body>
+<script type="text/javascript">
+    var app = {
+        init:function(){
+            var app_this = this;
+            this.getdata(function(data){
+                app_this.render(data) ;
+
+            }) ;
+        },
+        getdata(callback){
+            var xhr =new XMLHttpRequest();
+            xhr.open("GET","https://weixin.jirengu.com/weather",true);
+            xhr.onload= function(){
+                callback(JSON.parse(xhr.responseText))
+            }
+            xhr.send()
+        } ,
+        render(d){
+            console.log('加载数据'+d);
+            console.log(d)
+            $('.location .city').innerText = d.weather[0].city_name;
+            $$(".week .days span").forEach(function(item,index){
+                item.innerText = d.weather[0].future[index+1].day;
+            })
+            $$(".week .days span").forEach(function(item,index){
+                item.innerText = d.weather[0].future[index].day;
+            })
+
+            console.log($$(".temperature .days span"))
+        }
+
+    }
+    function $(selector){
+        return document.querySelector(selector) ;
+    }
+    function $$(selector){
+        return document.querySelectorAll(selector) ;
+    }
+
+    app.init()
+</script>
+</html>

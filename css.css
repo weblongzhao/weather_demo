@@ -1,0 +1,151 @@
+/*
+* @Author: Marte
+* @Date:   2018-03-26 14:45:10
+* @Last Modified by:   Marte
+* @Last Modified time: 2018-03-27 14:28:28
+*/
+* {
+    margin:0;
+    padding:0;
+
+}
+
+ul,
+li {
+    list-style-type: none;
+}
+
+.clearfix::after {
+    content:"";
+    display: block;
+    clear:both;
+}
+
+html {
+    width:100%;
+    height:100%;
+}
+
+body {
+    width:100%;
+    height:100%;
+    color:#fff;
+
+z-index: -5;
+    position:absolute;
+}
+
+body::before {
+    content:'';
+    background:url("http://p4ik510sj.bkt.clouddn.com/18-3-26/30099818.jpg") center center no-repeat;
+    width:100%;
+    height:100% ;
+    position: absolute;
+    filter: blur(5px);
+}
+
+section {
+    border:1px solid transparent;
+    z-index:6;
+    width: 998px;
+    position: absolute;
+    left:50%;
+    top: 170px;
+    margin-left: -499px;
+}
+
+.info {
+    height: 467px;
+    position:relative;
+    background:url("http://p4ik510sj.bkt.clouddn.com/18-3-26/30099818.jpg") center center no-repeat;
+    background-size:cover;
+}
+
+.location{
+    font-size: 20px;
+}
+
+.location .iconfont {
+    font-size:60px;
+}
+
+section .location {
+    float: right;
+
+}
+
+.info .suggest {
+    position:absolute;
+    bottom:5px;
+}
+
+.info .planes {
+    height: 300px;
+    width: 200px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: rgba(3, 164, 236, 0.6);
+}
+
+.info .planes li{
+    display:none;
+}
+
+.info .planes li.active {
+    display:block;
+}
+
+.suggest .tabs .active {
+    border-bottom: 5px solid rgba(3, 164, 236, 0.6);
+}
+
+.suggest .tabs span:hover {
+    cursor: pointer;
+}
+
+.temperature .today{
+    float: left;
+    width: 340px;
+
+}
+
+.temperature .week{
+    display:flex;
+}
+
+.temperature .week .days span,
+.temperature .today .day span
+{
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #988b83;
+    padding: 0 11px;
+}
+
+.temperature .week li{
+    text-align: center;
+    flex:1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
